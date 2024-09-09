@@ -1,7 +1,8 @@
 import React from 'react';
-import MovieCard from './MovieCard';
+import MovieCard from './MovieCard'
 
-const MovieList = ({ movies }) => {
+const MovieList = ({ movies}) => {
+
   return (
     <div className="flex flex-wrap -mx-2">
 
@@ -16,3 +17,4 @@ const MovieList = ({ movies }) => {
 };
 
 export default MovieList;
+

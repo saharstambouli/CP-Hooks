@@ -31,26 +31,27 @@ function App() {
 
   ]);
 
+const [rating,setRating] =useState(1)
 
   const [addButton, setAddButton] = useState(false);
-
+  const [keywords, setKeyWords] = useState("");
+  
+  
+  
   const addMovie = (newMovie) => {
     setMovies([...movies, newMovie]);
+    
   };
 
- const handleSearch = (search) => {
-    setMovies(movies.filter((movie) =>
-      movie.Title.toLowerCase().includes(search.Title.toLowerCase()) &&
-      (search.Rating === '' || movie.rating === parseInt(search.Rating))
-    ));
-  }; 
 
-
+  
+  
   
   const handleAdd = () => {
     setAddButton (!addButton);
   }
-
+    
+  console.log('movies', movies)
   return (
     <div className="App">
       <NavigationBar />
@@ -61,13 +62,12 @@ function App() {
 
 <hr />
       <header className="App-header">
+      <Filter setKeyWords={setKeyWords}  setRating={setRating}/>
 
-        <Filter handleSearch={handleSearch} />
-
         <hr />
         <hr />
         <hr />
-        <MovieList movies={movies}  />
+        <MovieList movies={ movies.filter((el,i)=>(el.Title.toLowerCase().includes(keywords?.toLowerCase()?.trim()) && el.rating>=rating))} />
 
       </header>
     </div>
